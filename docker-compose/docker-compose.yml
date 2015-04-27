@@ -1,0 +1,17 @@
+web:
+  image: aroma-dev:5000/arvato/jboss7
+  ports:
+    - "28080:8080"
+  volumes:
+    - /Users/eric/dev/docker_data/jboss-as/standalone/deployments:/opt/jboss-as/standalone/deployments
+    - /Users/eric/dev/workspace/aroma:/aroma
+  links:
+    - db:postgres
+db:
+  image: aroma-dev:5000/arvato/postgres
+  ports:
+    - "25432:5432"
+  environment:
+    - POSTGRES_USER=fortytwo
+    - POSTGRES_DB=fortytwo_local
+    - POSTGRES_PASSWORD=fortytwo
